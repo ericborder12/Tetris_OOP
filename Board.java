@@ -63,10 +63,10 @@ public class Board extends JPanel implements ActionListener {
     }
 
     public void addGameSpeed(int newSpeed) {
-        this.propSpeed = newSpeed; // Cập nhật tốc độ
+        this.propSpeed = newSpeed; // Update Speed
         statusbar.setText("Game Speed: " + newSpeed + ". Restart to apply changes.");
         timer.stop();
-        timer = new Timer(1000 / propSpeed, this); // Khởi động lại Timer
+        timer = new Timer(1000 / propSpeed, this); // Reset Timer
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -154,12 +154,12 @@ public class Board extends JPanel implements ActionListener {
         Dimension size = getSize();
         int boardTop = (int) size.getHeight() - BoardHeight * squareHeight();
 
-        g2D.setColor(Color.BLACK);  // Chọn màu cho lưới
+        g2D.setColor(Color.BLACK);  // Choose Color for Grid
         for (int x = 0; x < BoardWidth; x++) {
             for (int y = 0; y < BoardHeight; y++) {
-                // Vẽ các đường kẻ dọc
+                // Draw vertical
                 g2D.drawLine(x * squareWidth(), 0, x * squareWidth(), BoardHeight * squareHeight());
-                // Vẽ các đường kẻ ngang
+                // Draw horizontal
                 g2D.drawLine(0, y * squareHeight(), BoardWidth * squareWidth(), y * squareHeight());
             }
         }
@@ -327,7 +327,7 @@ public class Board extends JPanel implements ActionListener {
         this.propSpeed = speed;
         timer.stop();
         timer = new Timer(1000 / speed, this);
-        timer.start();  // Đảm bảo Timer mới sẽ bắt đầu với tốc độ mới
+        timer.start();  // Ensure new blocks get the inital speed
     }
     
     public void setDifficulty(int numOfShape) {
